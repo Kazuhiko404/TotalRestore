@@ -1,0 +1,9 @@
+deps/
+x64/
+*.lib
+*.exp
+*.obj
+*.log
+*.tlog
+*.idb
+*.pdb

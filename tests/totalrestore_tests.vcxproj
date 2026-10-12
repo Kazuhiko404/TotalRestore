@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Standalone unit tests for the pure TotalRestore rules (no KenshiLib).
+     Same toolset as the plugin (v100) so the rules compile with the compiler
+     that ships them. Build and run:
+       MSBuild TotalRestore/tests/totalrestore_tests.vcxproj -p:Configuration=Release -p:Platform=x64
+       TotalRestore/tests/x64/Release/totalrestore_tests.exe -->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3d6c1f84-7a2e-4b59-8e0d-52a9c4b7e613}</ProjectGuid>
+    <RootNamespace>totalrestore_tests</RootNamespace>
+    <TargetName>totalrestore_tests</TargetName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)x64\Release\</OutDir>
+    <IntDir>$(ProjectDir)x64\Release\obj\</IntDir>
+    <IncludePath>$(ProjectDir)..\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="toughness_scaling_tests.cpp" />
+    <ClCompile Include="..\src\ToughnessScaling.cpp" />
+    <ClCompile Include="limb_max_rules_tests.cpp" />
+    <ClCompile Include="..\src\LimbMaxRules.cpp" />
+    <ClCompile Include="..\src\LimbBaselineCache.cpp" />
+    <ClCompile Include="..\src\LimbMaxOwnership.cpp" />
+    <ClCompile Include="regen_rules_tests.cpp" />
+    <ClCompile Include="..\src\RegenRules.cpp" />
+    <ClCompile Include="..\src\RegenStateRegistry.cpp" />
+    <ClCompile Include="revive_rules_tests.cpp" />
+    <ClCompile Include="..\src\ReviveRules.cpp" />
+    <ClCompile Include="regrowth_rules_tests.cpp" />
+    <ClCompile Include="..\src\RegrowthRules.cpp" />
+    <ClCompile Include="flesh_cap_rules_tests.cpp" />
+    <ClCompile Include="..\src\FleshCapRules.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test_check.h" />
+    <ClInclude Include="test_suites.h" />
+    <ClInclude Include="..\src\ToughnessScaling.h" />
+    <ClInclude Include="..\src\LimbMaxRules.h" />
+    <ClInclude Include="..\src\LimbBaselineCache.h" />
+    <ClInclude Include="..\src\LimbMaxOwnership.h" />
+    <ClInclude Include="..\src\RegenRules.h" />
+    <ClInclude Include="..\src\RegenStateRegistry.h" />
+    <ClInclude Include="..\src\ReviveRules.h" />
+    <ClInclude Include="..\src\RegrowthRules.h" />
+    <ClInclude Include="..\src\FleshCapRules.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
